@@ -3,8 +3,6 @@ FROM golang
 Add . /go/src/first_webapp
 WORKDIR /go/src/first_webapp
 
-RUN go install first_webapp
+RUN go build server.go
 
-ENTRYPOINT /go/bin/first_webapp
-
-EXPOSE 8080
+CMD ./server $PORT
