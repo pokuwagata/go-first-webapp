@@ -17,10 +17,9 @@ jobs:
 
     steps:
       - checkout
-      # - run:
-      #     name: build docker image
-          # command: docker build -t registry.heroku.com/${HEROKU_APP_NAME}/web .
-          # command: docker build .
+      - run:
+          name: build docker image
+          command: docker build -t registry.heroku.com/${HEROKU_APP_NAME}/web .
       - run:
           name: setup heroku command
           command: bash .circleci/setup_heroku.sh
@@ -33,10 +32,10 @@ jobs:
           command: |
             docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com
             # docker push registry.heroku.com/${HEROKU_APP_NAME}/web
-            # heroku container:push web --app ${HEROKU_APP_NAME}
-            # heroku container:release web --app ${HEROKU_APP_NAME}
-            heroku container:push web
-            heroku container:release web
+            heroku container:push web --app ${HEROKU_APP_NAME}
+            heroku container:release web --app ${HEROKU_APP_NAME}
+            # heroku container:push web
+            # heroku container:release web
       - run:
           name: heroku maintenance off
           command: heroku maintenance:off --app ${HEROKU_APP_NAME}
