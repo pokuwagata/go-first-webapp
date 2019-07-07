@@ -20,7 +20,7 @@ jobs:
       - run:
           name: build docker image
           # command: docker build -t registry.heroku.com/${HEROKU_APP_NAME}/web .
-          command: docker build .
+          # command: docker build .
       - run:
           name: setup heroku command
           command: bash .circleci/setup_heroku.sh
