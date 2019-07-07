@@ -17,8 +17,8 @@ jobs:
 
     steps:
       - checkout
-      - run:
-          name: build docker image
+      # - run:
+      #     name: build docker image
           # command: docker build -t registry.heroku.com/${HEROKU_APP_NAME}/web .
           # command: docker build .
       - run:
