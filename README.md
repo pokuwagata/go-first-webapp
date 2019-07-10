@@ -6,6 +6,10 @@ build docker image
 
 `docker build -t first_webapp .`
 
+docker-compose
+
+`PORT=8000 docker-compose up -d`
+
 local test
 
 `docker run -d -e "PORT=8000" -p 80:8000 first_webapp`
