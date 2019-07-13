@@ -1,12 +1,13 @@
 package main
 
 import (
+	"database/sql"
 	"fmt"
+	"log"
 	"net/http"
 	"os"
 	"strconv"
-	"log"
-	"database/sql"
+
 	_ "github.com/go-sql-driver/mysql"
 )
 
@@ -14,16 +15,20 @@ func handler(writer http.ResponseWriter, request *http.Request) {
 	fmt.Fprintf(writer, "Hello World, %s!", request.URL.Path[1:])
 
 	var datasource string
-	if os.Getenv("env") == "PROD" {
+	env := os.Getenv("env")
+	switch env {
+	case "PROD":
 		datasource = os.Getenv("CLEARDB_USER") +
-			 ":" +
-			 os.Getenv("CLEARDB_PASSWORD") +
-			 "@tcp(" + 
-			 os.Getenv("CLEARDB_HOST") +
-			 ":3306)/" +
-			 os.Getenv("CLEARDB_DBNAME")
-	} else {
+			":" +
+			os.Getenv("CLEARDB_PASSWORD") +
+			"@tcp(" +
+			os.Getenv("CLEARDB_HOST") +
+			":3306)/" +
+			os.Getenv("CLEARDB_DBNAME")
+	case "DEV":
 		datasource = "user:password@(db:3306)/sample_db"
+	default:
+		return
 	}
 
 	db, err := sql.Open("mysql", datasource)

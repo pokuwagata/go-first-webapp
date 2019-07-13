@@ -23,7 +23,7 @@ func TestHandler(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if string(body) != "Hello World2, foo!" {
+	if string(body) != "Hello World, foo!" {
 		t.Errorf("resp.body is not 'Hello World, foo!'. got = %s", string(body))
 	}
 
