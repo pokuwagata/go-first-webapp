@@ -1,6 +1,6 @@
 # README
 
-[![CircleCI](https://circleci.com/gh/pokuwagata/go-first-webapp/tree/master.svg?style=svg)](https://circleci.com/gh/pokuwagata/go-first-webapp/tree/master)
+![CircleCI](https://img.shields.io/circleci/build/github/pokuwagata/go-first-webapp/master.svg)
 
 simple Go + MySQL API Server sample
 
