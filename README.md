@@ -1,26 +1,31 @@
 # README
 
-## local
+[![CircleCI](https://circleci.com/gh/pokuwagata/go-first-webapp/tree/master.svg?style=svg)](https://circleci.com/gh/pokuwagata/go-first-webapp/tree/master)
 
-build docker image
+simple Go + MySQL API Server sample
 
-`docker build -t first_webapp .`
+## Features
 
-docker-compose
+- Docker based environment
+- Using Docker-Compose for local development
+- Testing and Deploying on CircleCI
+- Heroku hosting
+- Using ClearDB for Production
 
-`PORT=8000 docker-compose up -d`
+## Requirements
 
-local test
+- Go 1.11 or higher
+- ClearDB MySQL Heroku Add-ons
 
-`docker run -d -e "PORT=8000" -p 80:8000 first_webapp`
+## Getting Started
 
-heroku deploy from local
+`$ docker-compose up -d`
 
-`heroku container:push web`
+access localhost:5000
 
-`heroku container:release web`
+## CircleCI Settings
 
-## circleci
+set the following enviroment variable
 
 ```bash
 $HEROKU_APP_NAME : heroku app name
@@ -28,6 +33,19 @@ $HEROKU_API_KEY : `$ heroku auth:token`
 $HEROKU_LOGIN : heroku email address
 ```
 
-## heroku
+## Heroku Settings
 
-heroku define `$PORT`
+set the following enviroment variable
+
+```bash
+$PORT : heroku defined automatically
+```
+
+run `$ heroku config | grep CLEARDB_DATABASE_URL`
+
+```bash
+$CLEARDB_USER
+$CLEARDB_PASSWORD
+$CLEARDB_HOST
+$CLEARDB_DBNAME
+```
