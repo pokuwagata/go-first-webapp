@@ -3,9 +3,8 @@ services:
 
   api:
     build: .
-      # context: .
-      # dockerfile: ./docker/api/Dockerfile
     environment:
+      - ENV=DEV
       - PORT=5000
     # env_file: ./docker/api/.env
     ports:
@@ -14,7 +13,6 @@ services:
       - db
 
   db:
-    # image: mysql:5.7
     build:
       context: .
       dockerfile: ./docker/mysql/Dockerfile

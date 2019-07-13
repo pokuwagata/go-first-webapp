@@ -1,8 +1,8 @@
-FROM golang
+FROM golang:1.12
 
-Add . /go/src/first_webapp
+ADD . /go/src/first_webapp
 WORKDIR /go/src/first_webapp
 
-RUN go build server.go
+RUN GO111MODULE=on go build server.go
 
-CMD ./server $PORT
+CMD env=$ENV ./server $PORT
