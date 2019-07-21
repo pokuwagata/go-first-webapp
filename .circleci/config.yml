@@ -8,7 +8,7 @@ jobs:
       - checkout
 
       #- run: go get -v -t -d ./...
-      - run: GO111MODULE=on go test -v
+      - run: cd docker/api && GO111MODULE=on go test -v
 
   deploy:
     machine:
