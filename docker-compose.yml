@@ -2,7 +2,9 @@ version: "3"
 services:
 
   api:
-    build: .
+    build:
+      context: .
+      dockerfile: ./docker/api/Dockerfile
     environment:
       - ENV=DEV
       - PORT=5000
